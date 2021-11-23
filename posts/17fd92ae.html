@@ -564,14 +564,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-11-15
+                    2021-11-23
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.3k
+                    1.4k
                 </div>
                 
 
@@ -597,7 +597,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1 id="个人博客搭建"><a href="#个人博客搭建" class="headerlink" title="个人博客搭建"></a>个人博客搭建</h1><h2 id="预先配置"><a href="#预先配置" class="headerlink" title="预先配置"></a>预先配置</h2><p>这两个安装就不进行操作了，发两个试过水的安装教程。（本来想自己出的，结果安装的时候忘记截屏了。。。）</p>
-<p>**安装git: **    <a target="_blank" rel="noopener" href="https://blog.csdn.net/huangqqdy/article/details/83032408?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522163670326116780264092782%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&amp;request_id=163670326116780264092782&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v1~rank_v31_ecpm-2-83032408.pc_search_result_cache&amp;utm_term=git%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE&amp;spm=1018.2226.3001.4187">git安装配置</a></p>
+<p><strong>安装git:</strong>    <a target="_blank" rel="noopener" href="https://blog.csdn.net/huangqqdy/article/details/83032408?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522163670326116780264092782%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&amp;request_id=163670326116780264092782&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v1~rank_v31_ecpm-2-83032408.pc_search_result_cache&amp;utm_term=git%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE&amp;spm=1018.2226.3001.4187">git安装配置</a></p>
 <p><strong>安装Node.js：</strong> <a target="_blank" rel="noopener" href="https://blog.csdn.net/zhangkaidsy/article/details/86645070?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522163670294116780265496506%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&amp;request_id=163670294116780265496506&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v1~rank_v31_ecpm-2-86645070.pc_search_result_cache&amp;utm_term=nodejs%E5%AE%89%E8%A3%85%E5%8F%8A%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE&amp;spm=1018.2226.3001.4187">Node.js安装配置</a>   </p>
 <p>注意：</p>
 <ul>
@@ -623,7 +623,8 @@
 <p>下载完成后，在根目录的__config.yml文件中找到themes将其切换成hexo-theme-matery</p>
 <p><img src="https://i.loli.net/2020/05/04/YKwFax1NrtVL6Zo.jpg" alt="hexo-theme-1.jpg"></p>
 <p>这样更换成功！！！</p>
-<h2 id="文章-Front-matter-介绍"><a href="#文章-Front-matter-介绍" class="headerlink" title="文章 Front-matter 介绍"></a>文章 Front-matter 介绍</h2><h3 id="Front-matter-选项详解"><a href="#Front-matter-选项详解" class="headerlink" title="Front-matter 选项详解"></a>Front-matter 选项详解</h3><p><code>Front-matter</code> 选项中的所有内容均为<strong>非必填</strong>的。但我仍然建议至少填写 <code>title</code> 和 <code>date</code> 的值。</p>
+<h2 id="文章-Front-matter-介绍"><a href="#文章-Front-matter-介绍" class="headerlink" title="文章 Front-matter 介绍"></a>文章 Front-matter 介绍</h2><p>新建文章 <code>hexo new &lt;title&gt;</code>。最后是文章标题，不需要加方括号</p>
+<h3 id="Front-matter-选项详解"><a href="#Front-matter-选项详解" class="headerlink" title="Front-matter 选项详解"></a>Front-matter 选项详解</h3><p><code>Front-matter</code> 选项中的所有内容均为<strong>非必填</strong>的。但我仍然建议至少填写 <code>title</code> 和 <code>date</code> 的值。</p>
 <table>
 <thead>
 <tr>
@@ -728,24 +729,43 @@ title: typora-vue-theme主题介绍
 date: 2018-09-07 09:25:00
 ---<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="最全示例"><a href="#最全示例" class="headerlink" title="最全示例"></a>最全示例</h3><pre class="line-numbers language-none"><code class="language-none">---
-title: typora-vue-theme主题介绍
-date: 2018-09-07 09:25:00
-author: 赵奇
-img: /source/images/xxx.jpg
-top: true
-hide: false
-cover: true
-coverImg: /images/1.jpg
-password: 8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92
-toc: false
-mathjax: false
-summary: 这是你自定义的文章摘要内容，如果这个属性有值，文章卡片摘要就显示这段文字，否则程序会自动截取文章的部分内容作为摘要
-categories: Markdown
-tags:
-  - Typora
-  - Markdown
----<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="最全示例"><a href="#最全示例" class="headerlink" title="最全示例"></a>最全示例</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token operator">--</span><span class="token operator">-</span>
+title<span class="token operator">:</span> typora<span class="token operator">-</span>vue<span class="token operator">-</span>theme主题介绍
+date<span class="token operator">:</span> <span class="token number">2018</span><span class="token operator">-</span><span class="token number">09</span><span class="token operator">-</span><span class="token number">07</span> <span class="token number">09</span><span class="token operator">:</span><span class="token number">25</span><span class="token operator">:</span><span class="token number">00</span>
+author<span class="token operator">:</span> 赵奇
+img<span class="token operator">:</span> <span class="token operator">/</span>source<span class="token operator">/</span>images<span class="token operator">/</span>xxx<span class="token punctuation">.</span>jpg
+top<span class="token operator">:</span> <span class="token boolean">true</span>
+hide<span class="token operator">:</span> <span class="token boolean">false</span>
+cover<span class="token operator">:</span> <span class="token boolean">true</span>
+coverImg<span class="token operator">:</span> <span class="token operator">/</span>images<span class="token operator">/</span><span class="token number">1.</span>jpg
+password<span class="token operator">:</span> <span class="token number">8d</span><span class="token number">969</span>eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92
+toc<span class="token operator">:</span> <span class="token boolean">false</span>
+mathjax<span class="token operator">:</span> <span class="token boolean">false</span>
+summary<span class="token operator">:</span> 这是你自定义的文章摘要内容，如果这个属性有值，文章卡片摘要就显示这段文字，否则程序会自动截取文章的部分内容作为摘要
+categories<span class="token operator">:</span> <span class="token class-name">Markdown</span>
+tags<span class="token operator">:</span>
+  <span class="token operator">-</span> <span class="token class-name">Typora</span>
+  <span class="token operator">-</span> <span class="token class-name">Markdown</span>
+<span class="token operator">--</span><span class="token operator">-</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="个人常用实例"><a href="#个人常用实例" class="headerlink" title="个人常用实例"></a>个人常用实例</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java">title<span class="token operator">:</span> 题目
+date<span class="token operator">:</span> <span class="token number">2021</span><span class="token operator">-</span><span class="token number">11</span><span class="token operator">-</span><span class="token number">15</span> <span class="token number">19</span><span class="token operator">:</span><span class="token number">19</span><span class="token operator">:</span><span class="token number">59</span>
+author<span class="token operator">:</span> 作者名称
+coverImg<span class="token operator">:</span> <span class="token operator">/</span>medias<span class="token operator">/</span>banner<span class="token operator">/</span><span class="token number">6.</span>jpg
+top<span class="token operator">:</span> <span class="token boolean">false</span>
+cover<span class="token operator">:</span> <span class="token boolean">true</span>
+toc<span class="token operator">:</span> <span class="token boolean">true</span>
+mathjax<span class="token operator">:</span> <span class="token boolean">false</span>
+summary<span class="token operator">:</span> 文章摘要
+tags<span class="token operator">:</span>
+  <span class="token operator">-</span> 标签
+categories<span class="token operator">:</span>
+  <span class="token operator">-</span> 分类
+abbrlink<span class="token operator">:</span> <span class="token number">17f</span>d92ae
+reprintPolicy<span class="token operator">:</span> cc_by
+img<span class="token operator">:</span> 图片路径<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><code>hexo clean &amp;&amp; hexo g -d</code>更新操作</p>
 
                 
             </div>
@@ -1283,47 +1303,45 @@ new Valine({
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/17fd92ae.html">
+                <a href="/posts/5f7017e8.html">
                     <div class="card-image">
                         
-                        <img src="https://img2.baidu.com/it/u=2925844976,290504173&fm=26&fmt=auto" class="responsive-img" alt="hexo博客搭建">
+                        <img src="https://img1.baidu.com/it/u=4198645104,2091132796&fm=26&fmt=auto" class="responsive-img" alt="递归算法">
                         
-                        <span class="card-title">hexo博客搭建</span>
+                        <span class="card-title">递归算法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            从零开始的hexo博客搭建，包括：git,Node.js的安装,主题（hexo-matery）转化以及美化，部署博客至GitHub
+                            递归算法讲解，目前例题较少，之后遇到会不定期更新
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-15
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-11-23
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%8D%9A%E5%AE%A2%E7%AF%87/" class="post-category">
-                                    博客篇
+                            <a href="/categories/%E7%AE%97%E6%B3%95%E7%AF%87/" class="post-category">
+                                    算法篇
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Hexo/">
-                        <span class="chip bg-color">Hexo</span>
+                    <a href="/tags/%E7%AE%97%E6%B3%95/">
+                        <span class="chip bg-color">算法</span>
                     </a>
                     
                 </div>
@@ -1612,7 +1630,7 @@ new Valine({
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">1.3k</span>&nbsp;字
+                class="white-color">2.2k</span>&nbsp;字
             
             
             

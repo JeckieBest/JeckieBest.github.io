@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Jeckie 后端 物联网 算法">
+    <meta name="keywords" content="递归算法">
     <meta name="description" content="本科 | 物联网工程 | 后端 | 算法">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Jeckie</title>
+    <title>递归算法 | Jeckie</title>
 
     <link rel="icon" type="image/png" href="https://img0.baidu.com/it/u=850325569,2495173566&fm=26&fmt=auto">
 
@@ -406,12 +406,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/posts/20200928021815.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://img1.baidu.com/it/u=4198645104,2091132796&fm=26&fmt=auto')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title"></h1>
+                    <h1 class="description center-align post-title">递归算法</h1>
                 </div>
             </div>
         </div>
@@ -530,12 +530,25 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E7%AE%97%E6%B3%95/">
+                                <span class="chip bg-color">算法</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E7%AE%97%E6%B3%95%E7%AF%87/" class="post-category">
+                                算法篇
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -544,28 +557,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-11-13
+                    2021-11-23
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-11-13
+                    2021-11-23
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    5
+                    803
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    3 分
                 </div>
                 
 
@@ -583,7 +596,80 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                google-site-verification: google110e5e5e14c8dcf0.html
+                <h1 id="递归算法"><a href="#递归算法" class="headerlink" title="递归算法"></a>递归算法</h1><h2 id="递归的基本概述："><a href="#递归的基本概述：" class="headerlink" title="递归的基本概述："></a>递归的基本概述：</h2><h3 id="递归的定义："><a href="#递归的定义：" class="headerlink" title="递归的定义："></a>递归的定义：</h3><p>递归算法<strong>通过重复将问题分解为同类的子问题</strong>而解决问题的方法，个人认为递归的基本思想就是<strong>自己调用自己</strong>。需要注意的是使用递归时<strong>必须要有一个结束条件</strong>，也就是递归出口。</p>
+<h3 id="递归的优缺点："><a href="#递归的优缺点：" class="headerlink" title="递归的优缺点："></a>递归的优缺点：</h3><h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><p>递归算法会使代码很简洁。</p>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ul>
+<li><p>递归算法解题的<strong>运行效率较低</strong>。在递归调用的过程当中系统为每一层的返回点、局部量等开辟了栈来存储。<strong>递归次数过多容易造成栈溢出</strong>。</p>
+</li>
+<li><p>递归<strong>运行效率较低</strong>。所以一般不提倡用递归算法设计程序。</p>
+</li>
+<li><p>递归算法的**时间复杂度是O(n^2)**，所以也是比较暴力破解算法。</p>
+</li>
+</ul>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">function <span class="token function">recursion</span><span class="token punctuation">(</span>大规模<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>end_condition<span class="token punctuation">)</span><span class="token punctuation">{</span>      <span class="token comment">// 明确的递归终止条件</span>
+        end<span class="token punctuation">;</span>   <span class="token comment">// 简单情景</span>
+    <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>            <span class="token comment">// 在将问题转换为子问题的每一步，解决该步中剩余部分的问题</span>
+        solve<span class="token punctuation">;</span>                <span class="token comment">// 递去</span>
+        <span class="token function">recursion</span><span class="token punctuation">(</span>小规模<span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment">// 递到最深处后，不断地归来</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><h3 id="斐波那契数列"><a href="#斐波那契数列" class="headerlink" title="斐波那契数列"></a>斐波那契数列</h3><p>斐波那契数列如下： 1,1,2,3,5,8,13,21,34,…</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">int</span> <span class="token function">fib</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span><span class="token comment">//用到函数，使用函数时注意的形参和实参的区别</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>n<span class="token operator">==</span><span class="token number">1</span> <span class="token operator">||</span> n<span class="token operator">==</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token comment">//确定前两个数，也是递归的出口</span>
+        <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">else</span>
+        <span class="token keyword">return</span> <span class="token class-name">Fib</span><span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token class-name">Fib</span><span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//使用了递归，递归就是自己调用自己，是一种非常简便的写法</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
+using namespace std;
+int main()
+{
+    //斐波那契数列第一种解法，F(n)=F(n - 1)+F(n - 2)
+    int n;
+    cin&gt;&gt;n;//输入需要得到斐波那契数列的第几项
+    int a=1,b=1;,i=1;//a,b是数列的第一、二个值，i是用来判断第几项的数值
+    while(i&lt;n)//知道i大于n才结束循环，相当于求得第n项的值后结束
+    {
+        int c=a+b;//c指下一项
+        a=b;//令第i项的第二个元素作为第i+1项的第一个元素，即n-2项
+        b=c;//将目前第i项的值作为i+1项的第二个元素，即n-1项
+        i++;//将i的值加一，保证循环可以退出，并且求第i+1项的数值
+    }
+    cout&lt;&lt;a&lt;&lt;endl;
+    return 0;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>第一种是递归方法，第二种是非递归方法。明显可以看出第一种比第二种代码更简洁，更精炼。然而效率却没有第二种高</strong></p>
+<h3 id="杨辉三角"><a href="#杨辉三角" class="headerlink" title="杨辉三角"></a>杨辉三角</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
+  * Title: 杨辉三角形又称Pascal三角形，它的第i+1行是(a+b)i的展开式的系数。
+  * 它的一个重要性质是：三角形中的每个数字等于它两肩上的数字相加。
+  * 
+  * 例如，下面给出了杨辉三角形的前4行： 
+  *    1 
+  *   1 1
+  *  1 2 1
+  * 1 3 3 1
+  */</span>
+  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">getValue</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">,</span> <span class="token keyword">int</span> y<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span><span class="token punctuation">(</span>y <span class="token operator">&lt;=</span> x <span class="token operator">&amp;&amp;</span> y <span class="token operator">&gt;=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+          <span class="token keyword">if</span><span class="token punctuation">(</span>y <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">||</span> x <span class="token operator">==</span> y<span class="token punctuation">)</span><span class="token punctuation">{</span>   <span class="token comment">// 递归终止条件</span>
+              <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span> 
+          <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span> 
+              <span class="token comment">// 递归调用，缩小问题的规模</span>
+              <span class="token keyword">return</span> <span class="token function">getValue</span><span class="token punctuation">(</span>x<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> y<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token function">getValue</span><span class="token punctuation">(</span>x<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+          <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+      <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>之后遇到递归类型的算法题目会更新，目前就讲解到这里。</strong></p>
+
                 
             </div>
             <hr/>
@@ -609,7 +695,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://blog.Jeckie.top/google1xxxxxxx0.html">http://blog.Jeckie.top/google1xxxxxxx0.html</a>
+                    <a href="http://blog.Jeckie.top/posts/5f7017e8.html">http://blog.Jeckie.top/posts/5f7017e8.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -646,7 +732,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/%E7%AE%97%E6%B3%95/">
+                                    <span class="chip bg-color">算法</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -1121,34 +1211,45 @@ new Valine({
                 <i class="far fa-dot-circle"></i>&nbsp;本篇
             </div>
             <div class="card">
-                <a href="/google1xxxxxxx0.html">
+                <a href="/posts/5f7017e8.html">
                     <div class="card-image">
                         
+                        <img src="https://img1.baidu.com/it/u=4198645104,2091132796&fm=26&fmt=auto" class="responsive-img" alt="递归算法">
                         
-                        <img src="https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/posts/20200928021815.jpg" class="responsive-img" alt="">
-                        
-                        <span class="card-title"></span>
+                        <span class="card-title">递归算法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            递归算法讲解，目前例题较少，之后遇到会不定期更新
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-13
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-23
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Jeckie
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%AE%97%E6%B3%95%E7%AF%87/" class="post-category">
+                                    算法篇
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
 
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E7%AE%97%E6%B3%95/">
+                        <span class="chip bg-color">算法</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
@@ -1156,37 +1257,47 @@ new Valine({
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/google1xxxxxxx0.html">
+                <a href="/posts/17fd92ae.html">
                     <div class="card-image">
                         
+                        <img src="https://img2.baidu.com/it/u=2925844976,290504173&fm=26&fmt=auto" class="responsive-img" alt="hexo博客搭建">
                         
-                        <img src="https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed@master/posts/20200928021815.jpg" class="responsive-img" alt="">
-                        
-                        <span class="card-title"></span>
+                        <span class="card-title">hexo博客搭建</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            从零开始的hexo博客搭建，包括：git,Node.js的安装,主题（hexo-matery）转化以及美化，部署博客至GitHub
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-13
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-15
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Jeckie
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%8D%9A%E5%AE%A2%E7%AF%87/" class="post-category">
+                                    博客篇
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
-
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Hexo/">
+                        <span class="chip bg-color">Hexo</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
