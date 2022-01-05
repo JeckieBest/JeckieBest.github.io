@@ -575,7 +575,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    843
+                    835
                 </div>
                 
 
@@ -611,94 +611,11 @@
 <p>-10^5 ≤ n , m ≤ 10^5</p>
 <p>-10^9 ≤ l ≤ r ≤ 10^9</p>
 <p>-1000 ≤ c ≤ 10000</p>
-<h4 id="输入样例"><a href="#输入样例" class="headerlink" title="输入样例"></a>输入样例</h4><pre class="line-numbers language-none"><code class="language-none">3 3
-1 2
-3 6
-7 5
-1 3
-4 6
-7 8<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="输入样例"><a href="#输入样例" class="headerlink" title="输入样例"></a>输入样例</h4><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">3 3</span><br><span class="line">1 2</span><br><span class="line">3 6</span><br><span class="line">7 5</span><br><span class="line">1 3</span><br><span class="line">4 6</span><br><span class="line">7 8</span><br></pre></td></tr></tbody></table></figure>
 
-<h4 id="输出样例"><a href="#输出样例" class="headerlink" title="输出样例"></a>输出样例</h4><pre class="line-numbers language-none"><code class="language-none">8
-0
-5<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h4 id="输出样例"><a href="#输出样例" class="headerlink" title="输出样例"></a>输出样例</h4><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">8</span><br><span class="line">0</span><br><span class="line">5</span><br></pre></td></tr></tbody></table></figure>
 
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
-#include &lt;vector&gt;
-#include &lt;algorithm&gt;
-/**
- * 由分析可知，本体若直接暴力，数据范围太大（2e9）,特别占用空间，因此使用离散化的思想，只对输入的位置进行操作，并通过PII
- * 类型的变量将值与位置存储起来，之后去重，排序，求前缀和即可得到结果
- */
-using namespace std;
-
-typedef pair&lt;int, int&gt; PII;
-
-const int N = 3e5 + 10;//之所以是3e5，是因为在最极端的情况下，n次操作与m次询问的l和r都是不同的，因此为3e5
-
-int n, m;
-int a[N], s[N];//用于求前缀和的数组
-
-vector&lt;int&gt; alls;
-vector&lt;PII&gt; add, query;
-
-int find(int x)//使用二分查找区间的位置，因为是有序的，时间复杂度为log2 N
-{
-    int l = 0;
-    int r = alls.size() - 1;
-    
-    while (l &lt; r){
-        int mid = l + r &gt;&gt; 1;
-        if(alls[mid] &gt;= x) r = mid;
-        else l = mid + 1; 
-    }
-    return l + 1;
-}
-int unique(vector&lt;int&gt; &amp;a){
-    int j = 0;
-    for (int i = 0; i &lt; a.size(); i ++ ){
-        if(!i || a[i] != a[i - 1]){
-            a[j ++ ] = a[i];
-        }
-    }
-    return j;
-}
-int main()
-{
-    cin &gt;&gt; n &gt;&gt; m;
-    for (int i = 0; i &lt; n; i ++ ){
-        int x, c;
-        cin &gt;&gt; x &gt;&gt; c;
-     
-        add.push_back({x, c});
-        alls.push_back(x);
-    }
-    for (int i = 0; i &lt; m; i ++ ){
-        int l, r;
-        cin &gt;&gt; l &gt;&gt; r;
-        
-        query.push_back({l, r});
-        alls.push_back(l);
-        alls.push_back(r);
-    }
-    sort(alls.begin(), alls.end());
-    alls.erase(alls.begin() + unique(alls), alls.end());
-    //erase删除函数，unique是去重函数（思想是将有重复的放入最后，删除即可得到去重后的函数）
-    for (auto item : add){
-        int x = find(item.first);
-        a[x] += item.second;
-    }
-    for (int i = 1; i &lt;= alls.size(); i ++ ) s[i] = s[i - 1] + a[i];//处理前缀和数组
-    // 处理询问
-    for (auto item : query)
-    {
-        int l = find(item.first), r = find(item.second);
-        cout &lt;&lt; s[r] - s[l - 1] &lt;&lt; endl;
-    }
-
-    return 0;
-}
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 由分析可知，本体若直接暴力，数据范围太大（2e9）,特别占用空间，因此使用离散化的思想，只对输入的位置进行操作，并通过PII</span></span><br><span class="line"><span class="comment"> * 类型的变量将值与位置存储起来，之后去重，排序，求前缀和即可得到结果</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">pair</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; PII;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">3e5</span> + <span class="number">10</span>;<span class="comment">//之所以是3e5，是因为在最极端的情况下，n次操作与m次询问的l和r都是不同的，因此为3e5</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, m;</span><br><span class="line"><span class="keyword">int</span> a[N], s[N];<span class="comment">//用于求前缀和的数组</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; alls;</span><br><span class="line"><span class="built_in">vector</span>&lt;PII&gt; add, query;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span><span class="comment">//使用二分查找区间的位置，因为是有序的，时间复杂度为log2 N</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="keyword">int</span> l = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> r = alls.size() - <span class="number">1</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> (l &lt; r){</span><br><span class="line">        <span class="keyword">int</span> mid = l + r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(alls[mid] &gt;= x) r = mid;</span><br><span class="line">        <span class="keyword">else</span> l = mid + <span class="number">1</span>; </span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> l + <span class="number">1</span>;</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">unique</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;a)</span></span>{</span><br><span class="line">    <span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; a.size(); i ++ ){</span><br><span class="line">        <span class="keyword">if</span>(!i || a[i] != a[i - <span class="number">1</span>]){</span><br><span class="line">            a[j ++ ] = a[i];</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> j;</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i ++ ){</span><br><span class="line">        <span class="keyword">int</span> x, c;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; x &gt;&gt; c;</span><br><span class="line">     </span><br><span class="line">        add.push_back({x, c});</span><br><span class="line">        alls.push_back(x);</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i ++ ){</span><br><span class="line">        <span class="keyword">int</span> l, r;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; l &gt;&gt; r;</span><br><span class="line">        </span><br><span class="line">        query.push_back({l, r});</span><br><span class="line">        alls.push_back(l);</span><br><span class="line">        alls.push_back(r);</span><br><span class="line">    }</span><br><span class="line">    sort(alls.begin(), alls.end());</span><br><span class="line">    alls.erase(alls.begin() + unique(alls), alls.end());</span><br><span class="line">    <span class="comment">//erase删除函数，unique是去重函数（思想是将有重复的放入最后，删除即可得到去重后的函数）</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> item : add){</span><br><span class="line">        <span class="keyword">int</span> x = find(item.first);</span><br><span class="line">        a[x] += item.second;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= alls.size(); i ++ ) s[i] = s[i - <span class="number">1</span>] + a[i];<span class="comment">//处理前缀和数组</span></span><br><span class="line">    <span class="comment">// 处理询问</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> item : query)</span><br><span class="line">    {</span><br><span class="line">        <span class="keyword">int</span> l = find(item.first), r = find(item.second);</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; s[r] - s[l - <span class="number">1</span>] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
 
 
                 
@@ -1571,7 +1488,7 @@ new Valine({
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">6.1k</span>&nbsp;字
+                class="white-color">6.3k</span>&nbsp;字
             
             
             
