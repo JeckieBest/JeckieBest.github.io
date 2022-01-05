@@ -40,9 +40,9 @@
       s.parentNode.insertBefore(hm, s);
     })();
     </script>
-<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Jeckie" type="application/atom+xml">
-
+<meta name="generator" content="Hexo 5.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Jeckie" type="application/atom+xml">
 </head>
 
 
@@ -568,21 +568,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-01-04
+                    2022-01-05
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    831
+                    1.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    5 分
                 </div>
                 
 
@@ -607,7 +607,7 @@
 <p>该公式表示：F[ i , j ] 从前 i 个物品中选出了总体积为 j 的物品放入背包的最大价值和</p>
 <p>​                     F [ i - 1 , j ] 表示不选第 i 个物品的最大价值</p>
 <p>​                     F [ i - 1 , j - v ] + w (条件：j &gt;= v) 表示不选第 i 个物品的最大价值</p>
-<h3 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h3><h5 id="优化前"><a href="#优化前" class="headerlink" title="优化前"></a>优化前</h5><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+<h3 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h3><h4 id="求最大价值"><a href="#求最大价值" class="headerlink" title="求最大价值"></a>求最大价值</h4><h5 id="优化前"><a href="#优化前" class="headerlink" title="优化前"></a>优化前</h5><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
 using namespace std;
 const int N = 1e3 + 10;
 int f[N][N];//用于表示F[i,j]
@@ -645,6 +645,27 @@ int main(){
     return 0;
 }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<h4 id="求方案数"><a href="#求方案数" class="headerlink" title="求方案数"></a>求方案数</h4><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+const int N = 10010;
+int n, m;
+int f[N];//f[i,j]的含义是，前i个物品值为j的方案数
+int main()
+{
+    cin &gt;&gt; n &gt;&gt; m;
+    f[0] = 1;
+    for (int i = 0; i &lt; n; i ++ )
+    {
+        int v;
+        cin &gt;&gt; v;
+        for (int j = m; j &gt;= v; j -- )
+            f[j] += f[j - v];//max函数变成了+发
+    }
+    cout &lt;&lt; f[m] &lt;&lt; endl;
+    return 0;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 
 
 <h2 id="完全背包问题"><a href="#完全背包问题" class="headerlink" title="完全背包问题"></a>完全背包问题</h2><p><strong>n个物品（每个物品无限个），每个物品v体积，w价值，有m个背包，如何取价值最大化</strong></p>
@@ -652,7 +673,7 @@ int main(){
 <p>该公式表示：F[ i , j ] 从前 i 个物品中选出了总体积为 j 的物品放入背包的最大价值和</p>
 <p>​                     F [ i - 1 , j ] 表示未选第 i 个物品的最大价值</p>
 <p>​                     F [ i , j - v ] + w (条件：j &gt;= v) 表示选第 i 个物品的最大价值（选1，2，3……个的总和）</p>
-<h3 id="模板-1"><a href="#模板-1" class="headerlink" title="模板"></a>模板</h3><h5 id="优化前-1"><a href="#优化前-1" class="headerlink" title="优化前"></a>优化前</h5><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+<h3 id="模板-1"><a href="#模板-1" class="headerlink" title="模板"></a>模板</h3><h4 id="求最大价值-1"><a href="#求最大价值-1" class="headerlink" title="求最大价值"></a>求最大价值</h4><h5 id="优化前-1"><a href="#优化前-1" class="headerlink" title="优化前"></a>优化前</h5><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
 using namespace std;
 const int N = 1010;
 int f[N][N];
@@ -689,11 +710,53 @@ int main(){
     return 0;
 }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<h4 id="求方案数-1"><a href="#求方案数-1" class="headerlink" title="求方案数"></a>求方案数</h4><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+using namespace std;
+const int N = 1010;
+int n;
+int v[4] = {10, 20, 50, 100};//与01背包求方案数类似
+int f[N];
+
+int main()
+{
+    cin &gt;&gt; n;
+    f[0] = 1;
+    for (int i = 0; i &lt; 4; i ++ )
+        for (int j = v[i]; j &lt;= n; j ++ )
+            f[j] += f[j - v[i]];
+
+    cout &lt;&lt; f[n] &lt;&lt; endl;
+    return 0;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 
 
 <h2 id="多重背包问题"><a href="#多重背包问题" class="headerlink" title="多重背包问题"></a>多重背包问题</h2><p><strong>n个物品（每个物品有限个），每个物品v体积，w价值，有m个背包，如何取价值最大化</strong></p>
 <h2 id="分组背包问题"><a href="#分组背包问题" class="headerlink" title="分组背包问题"></a>分组背包问题</h2><p><strong>n个物品（每个物品有限个），有很多组，每个组只能取一个，每个物品v体积，w价值，有m个背包，如何取价值最大化</strong></p>
 <p><strong>可将每个组看成一个01背包问题，此时就将分组背包转化为多个01背包问题</strong>、</p>
+<h2 id="背包问题练习题"><a href="#背包问题练习题" class="headerlink" title="背包问题练习题"></a>背包问题练习题</h2><h4 id="二维01背包"><a href="#二维01背包" class="headerlink" title="二维01背包"></a>二维01背包</h4><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+
+using namespace std;
+
+const int N = 110;
+
+int n, V, M;
+int f[N][N];
+
+int main()
+{
+    cin &gt;&gt; n &gt;&gt; V &gt;&gt; M;
+    for (int i = 0; i &lt; n; i ++ ){
+        int v, m, w;
+        cin &gt;&gt; v &gt;&gt; m &gt;&gt; w;
+        for (int j = V; j &gt;= v; j -- )
+            for (int k = M; k &gt;= m; k -- )//注意，k循环可以反着写，也可以正着写，不影响。
+                f[j][k] = max(f[j][k], f[j - v][k - m] + w);
+    }
+    cout &lt;&lt; f[V][M] &lt;&lt; endl;
+    return 0;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 
                 
             </div>
@@ -1293,23 +1356,23 @@ new Valine({
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/posts/5f7017e8.html">
+                <a href="/posts/16fd92ae.html">
                     <div class="card-image">
                         
-                        <img src="https://img2.baidu.com/it/u=2137914565,2303701391&fm=26&fmt=auto" class="responsive-img" alt="递归算法">
+                        <img src="https://s3.bmp.ovh/imgs/2021/09/5aebba96109c7834.jpg" class="responsive-img" alt="离散化">
                         
-                        <span class="card-title">递归算法</span>
+                        <span class="card-title">离散化</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            递归算法讲解，目前例题较少，之后遇到会不定期更新
+                            离散化思想及例题
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-23
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-03
                             </span>
                         <span class="publish-author">
                             
@@ -1328,6 +1391,10 @@ new Valine({
                     
                     <a href="/tags/%E7%AE%97%E6%B3%95/">
                         <span class="chip bg-color">算法</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%A6%BB%E6%95%A3%E5%8C%96/">
+                        <span class="chip bg-color">离散化</span>
                     </a>
                     
                 </div>
@@ -1567,7 +1634,7 @@ new Valine({
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">5.8k</span>&nbsp;字
+                class="white-color">6.1k</span>&nbsp;字
             
             
             
