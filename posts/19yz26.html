@@ -568,21 +568,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-01-05
+                    2022-01-06
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.7k
+                    4.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    18 分
+                    19 分
                 </div>
                 
 
@@ -602,6 +602,27 @@
             <div id="articleContent">
                 <h1 id="背包问题（dp）"><a href="#背包问题（dp）" class="headerlink" title="背包问题（dp）"></a>背包问题（dp）</h1><p><strong>化零散为整体，使用f(i,j)表示一大类集合</strong></p>
 <p><strong>化整为零，f(i,j)是由谁转化来的（如何得出）</strong></p>
+<h2 id="背包问题思维方式"><a href="#背包问题思维方式" class="headerlink" title="背包问题思维方式"></a>背包问题思维方式</h2><p><strong>首先确定f [ i , j ] 函数的定义</strong></p>
+<p><img src="https://i.bmp.ovh/imgs/2022/01/a838d6215efa3e01.png" alt="0011"></p>
+<p><strong>确定定义后通过图片进行分析，列好f [ i , j ] 从实际意义出发考虑初始化</strong></p>
+<h3 id="方案数问题"><a href="#方案数问题" class="headerlink" title="方案数问题"></a>方案数问题</h3><ul>
+<li><strong>考虑到前i个然后总和至多,不超过，小于等于j的时候f(所有)初始化成1</strong></li>
+<li><strong>考虑到前i个然后总和恰好等于j的时候f(O) = 1其余都是0</strong></li>
+<li><strong>考虑到前i个然后总和至少是j的时候f(O) = 1其余都是0转移的时候可以要j &lt;v从f (0)转移过来所以j可以从0开始枚举</strong></li>
+</ul>
+<h3 id="最大最小值问题"><a href="#最大最小值问题" class="headerlink" title="最大最小值问题"></a>最大最小值问题</h3><h4 id="不超过"><a href="#不超过" class="headerlink" title="不超过"></a>不超过</h4><ul>
+<li><strong>考虑到前i个物品体积不超过，至多，小于等于j的所有方案的价值最大值f(所有) = 0</strong></li>
+<li><strong>所以体积不超过j的时候我们不讨论最小值</strong></li>
+</ul>
+<h4 id="恰好等于"><a href="#恰好等于" class="headerlink" title="恰好等于"></a>恰好等于</h4><ul>
+<li><strong>考虑到前i个物品体积恰好等于j的所有方案的价值最大值f (0) = 0 f(其余) - 0x3f3f3f3f</strong></li>
+<li><strong>最小值f (0) =0f (其余) 0x3f3f3f3f</strong></li>
+</ul>
+<h4 id="至少"><a href="#至少" class="headerlink" title="至少"></a>至少</h4><ul>
+<li><strong>考虑到前i个物品体积至少是j的所有方案的价值最大值我们不讨论</strong></li>
+<li><strong>最小值f (0) = 0 f(其余) 0x3f3f3f3f状态转移j &lt; v可以从0转过来</strong></li>
+</ul>
+<hr>
 <h2 id="01背包"><a href="#01背包" class="headerlink" title="01背包"></a>01背包</h2><p><strong>n个物品（每个物品只有一个），每个物品v体积，w价值，有m个背包，如何取价值最大化</strong></p>
 <h3 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h3><p>F[ i , j ] = max ( F [ i - 1 , j ] , F [ i - 1 , j - v] + w )</p>
 <p>该公式表示：F[ i , j ] 从前 i 个物品中选出了总体积为 j 的物品放入背包的最大价值和</p>
@@ -666,8 +687,7 @@ int main()
     return 0;
 }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-
-
+<hr>
 <h2 id="完全背包问题"><a href="#完全背包问题" class="headerlink" title="完全背包问题"></a>完全背包问题</h2><p><strong>n个物品（每个物品无限个），每个物品v体积，w价值，有m个背包，如何取价值最大化</strong></p>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>F[ i , j ] = max ( F [ i - 1 , j ] , F [ i  , j - v] + w )</p>
 <p>该公式表示：F[ i , j ] 从前 i 个物品中选出了总体积为 j 的物品放入背包的最大价值和</p>
@@ -729,8 +749,7 @@ int main()
     return 0;
 }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-
-
+<hr>
 <h2 id="多重背包问题"><a href="#多重背包问题" class="headerlink" title="多重背包问题"></a>多重背包问题</h2><p><strong>n个物品（每个物品有限个），每个物品v体积，w价值，有m个背包，如何取价值最大化</strong></p>
 <h3 id="模板-2"><a href="#模板-2" class="headerlink" title="模板"></a>模板</h3><h5 id="优化前-2"><a href="#优化前-2" class="headerlink" title="优化前"></a>优化前</h5><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
 using namespace std;
@@ -795,8 +814,7 @@ int main(){
     return 0;
 }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-
-
+<hr>
 <h2 id="分组背包问题"><a href="#分组背包问题" class="headerlink" title="分组背包问题"></a>分组背包问题</h2><p><strong>n个物品（每个物品有限个），有很多组，每个组只能取一个，每个物品v体积，w价值，有m个背包，如何取价值最大化</strong></p>
 <p><strong>可将每个组看成一个01背包问题，此时就将分组背包转化为多个01背包问题</strong>、</p>
 <h3 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h3><p>F[ i , j ] = max ( F [ i - 1 , j ] , F [ i  , j - v] + w )</p>
@@ -866,8 +884,7 @@ int main(){
 }
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-
-
+<hr>
 <h2 id="背包问题练习题"><a href="#背包问题练习题" class="headerlink" title="背包问题练习题"></a>背包问题练习题</h2><h4 id="二维01背包"><a href="#二维01背包" class="headerlink" title="二维01背包"></a>二维01背包</h4><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
 
 using namespace std;
@@ -1184,6 +1201,9 @@ int main()
 
     return 0;
 }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
 
                 
             </div>
@@ -2061,7 +2081,7 @@ new Valine({
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">8.7k</span>&nbsp;字
+                class="white-color">9k</span>&nbsp;字
             
             
             
